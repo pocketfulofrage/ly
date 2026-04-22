@@ -975,13 +975,13 @@ pub fn main() !void {
 
     switch (state.config.animation) {
         .cyanjnpr => {
-            const cyanjnpr_animations = [_]enums.Animation{
+            const cyanjnpr_animations = [_]state.enums.Animation{
                 .datastream,
                 .interference,
                 .arrowheads,
                 .perlin,
                 .kiroshi,
-                // .waveforms,
+                .waveforms,
                 .colorbars,
             };
             state.config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
