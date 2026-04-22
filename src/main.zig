@@ -973,7 +973,7 @@ pub fn main() !void {
     // Initialize the animation, if any
     var animation: ?*Widget = null;
 
-    switch (config.animation) {
+    switch (state.config.animation) {
         .cyanjnpr => {
             const cyanjnpr_animations = [_]enums.Animation{
                 .datastream,
@@ -984,7 +984,7 @@ pub fn main() !void {
                 // .waveforms,
                 .colorbars,
             };
-            config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
+            state.config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
         },
         else => {},
     }
