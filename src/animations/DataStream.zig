@@ -71,7 +71,7 @@ pub fn init(
     };
 }
 
-pub fn animation(self: *DataStream) Animation {
+pub fn animation(self: *DataStream) Widget {
     return Animation.init(self, deinit, realloc, draw);
 }
 
