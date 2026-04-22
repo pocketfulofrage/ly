@@ -7,6 +7,14 @@ pub const Animation = enum {
     colormix,
     gameoflife,
     dur_file,
+    cyanjnpr,
+    datastream,
+    interference,
+    kiroshi,
+    arrowheads,
+    perlin,
+    waveforms,
+    colorbars,
 };
 
 pub const DisplayServer = enum {
