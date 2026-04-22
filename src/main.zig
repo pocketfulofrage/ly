@@ -1078,7 +1078,7 @@ pub fn main() !void {
                 state.config.datastream_delay_max,
                 state.config.datastream_binary
             );
-            animation = datastream.animation();
+            animation = datastream.widget();
         },
         .interference => {
             var interference = try Interference.init(
@@ -1089,7 +1089,7 @@ pub fn main() !void {
                 state.config.interference_distance_scale,
                 state.config.interference_corner_variant
             );
-            animation = interference.animation();
+            animation = interference.widget();
         },
         .kiroshi => {
             var kiroshi = try Kiroshi.init(
@@ -1098,7 +1098,7 @@ pub fn main() !void {
                 state.config.kiroshi_fg,
                 state.config.kiroshi_delay
             );
-            animation = kiroshi.animation();
+            animation = kiroshi.widget();
         },
         .arrowheads => {
             // TerminalBuffer.zig init
@@ -1115,7 +1115,7 @@ pub fn main() !void {
                 state.config.arrowheads_delay,
                 state.config.arrowheads_size
             );
-            animation = arrowheads.animation();
+            animation = arrowheads.widget();
         },
         .perlin => {
             var perlin = try Perlin.init(
@@ -1127,14 +1127,14 @@ pub fn main() !void {
                 state.config.perlin_direction_diagonal,
                 state.config.perlin_sandworm_variant
             );
-            animation = perlin.animation();
+            animation = perlin.widget();
         },
         .waveforms => {
             var waveforms = try Waveforms.init(
                 state.allocator,
                 &state.buffer, 500
             );
-            animation = waveforms.animation();
+            animation = waveforms.widget();
         },
         .colorbars => {
             var colorbars = ColorBars.init(
@@ -1143,7 +1143,7 @@ pub fn main() !void {
                 state.config.colorbars_glitch_amplitude,
                 state.config.colorbars_glitch_scale
             );
-            animation = colorbars.animation();
+            animation = colorbars.widget();
         },
     }
     defer if (animation) |a| a.deinit();
