@@ -984,7 +984,7 @@ pub fn main() !void {
                 .waveforms,
                 .colorbars,
             };
-            state.config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
+            state.config.animation = cyanjnpr_animations[state.buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
         },
         else => {},
     }
