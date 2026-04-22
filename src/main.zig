@@ -976,7 +976,7 @@ pub fn main() !void {
 
     switch (state.config.animation) {
         .cyanjnpr => {
-            const cyanjnpr_animations = [_]state.enums.Animation{
+            const cyanjnpr_animations = [_]enums.Animation{
                 .datastream,
                 .interference,
                 .arrowheads,
@@ -1106,8 +1106,8 @@ pub fn main() !void {
             var arrowheads = try Arrowheads.init(
                 state.allocator,
                 &state.buffer,
-                state.box_len,
-                state.box_height,
+                box_len,
+                box_height,
                 state.config.arrowheads_col1,
                 state.config.arrowheads_col2,
                 state.config.arrowheads_col3,
