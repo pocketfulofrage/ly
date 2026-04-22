@@ -72,7 +72,7 @@ pub fn init(
 }
 
 pub fn animation(self: *DataStream) Widget {
-    return Animation.init(self, deinit, realloc, draw);
+    return Widget.init(self, deinit, realloc, draw);
 }
 
 fn deinit(self: *DataStream) void {
