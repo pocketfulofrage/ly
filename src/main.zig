@@ -1065,34 +1065,81 @@ pub fn main() !void {
             animation = dur.widget();
         },
         .datastream => {
-            var datastream = try DataStream.init(allocator, &buffer, config.datastream_fg, config.datastream_blocks, config.datastream_bidirectional, config.datastream_delay_min, config.datastream_delay_max, config.datastream_binary);
+            var datastream = try DataStream.init(
+                state.allocator,
+                &state.buffer,
+                state.config.datastream_fg,
+                state.config.datastream_blocks,
+                state.config.datastream_bidirectional,
+                state.config.datastream_delay_min,
+                state.config.datastream_delay_max,
+                state.config.datastream_binary
+            );
             animation = datastream.animation();
         },
         .interference => {
-            var interference = try Interference.init(allocator, &buffer, config.interference_fg, config.interference_time_scale, config.interference_distance_scale, config.interference_corner_variant);
+            var interference = try Interference.init(
+                state.allocator,
+                &state.buffer,
+                state.config.interference_fg,
+                state.config.interference_time_scale,
+                state.config.interference_distance_scale,
+                state.config.interference_corner_variant
+            );
             animation = interference.animation();
         },
         .kiroshi => {
-            var kiroshi = try Kiroshi.init(allocator, &buffer, config.kiroshi_fg, config.kiroshi_delay);
+            var kiroshi = try Kiroshi.init(
+                state.allocator,
+                &state.buffer,
+                state.config.kiroshi_fg,
+                state.config.kiroshi_delay
+            );
             animation = kiroshi.animation();
         },
         .arrowheads => {
             // TerminalBuffer.zig init
             const box_len = (2 * config.margin_box_h) + config.input_len + 1 + labels_max_length;
             const box_height = (2 * config.margin_box_v) + 7;
-            var arrowheads = try Arrowheads.init(allocator, &buffer, box_len, box_height, config.arrowheads_col1, config.arrowheads_col2, config.arrowheads_col3, config.arrowheads_delay, config.arrowheads_size);
+            var arrowheads = try Arrowheads.init(
+                state.allocator,
+                &state.buffer,
+                state.box_len,
+                state.box_height,
+                state.config.arrowheads_col1,
+                state.config.arrowheads_col2,
+                state.config.arrowheads_col3,
+                state.config.arrowheads_delay,
+                state.config.arrowheads_size
+            );
             animation = arrowheads.animation();
         },
         .perlin => {
-            var perlin = try Perlin.init(allocator, &buffer, config.perlin_fg, config.perlin_time_scale, config.perlin_distance_scale, config.perlin_direction_diagonal, config.perlin_sandworm_variant);
+            var perlin = try Perlin.init(
+                state.allocator,
+                &state.buffer,
+                state.config.perlin_fg,
+                state.config.perlin_time_scale,
+                state.config.perlin_distance_scale,
+                state.config.perlin_direction_diagonal,
+                state.config.perlin_sandworm_variant
+            );
             animation = perlin.animation();
         },
         .waveforms => {
-            var waveforms = try Waveforms.init(allocator, &buffer, 500);
+            var waveforms = try Waveforms.init(
+                state.allocator,
+                &state.buffer, 500
+            );
             animation = waveforms.animation();
         },
         .colorbars => {
-            var colorbars = ColorBars.init(&buffer, config.colorbars_brightness, config.colorbars_glitch_amplitude, config.colorbars_glitch_scale);
+            var colorbars = ColorBars.init(
+                &state.buffer,
+                state.config.colorbars_brightness,
+                state.config.colorbars_glitch_amplitude,
+                state.config.colorbars_glitch_scale
+            );
             animation = colorbars.animation();
         },
     }
