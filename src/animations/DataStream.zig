@@ -1,7 +1,7 @@
 const std = @import("std");
 const Animation = @import("../tui/Animation.zig");
 const Cell = @import("../tui/Cell.zig");
-const TerminalBuffer = @import("/ly-ui/src/TerminalBuffer.zig");
+const TerminalBuffer = @import("TerminalBuffer.zig");
 
 const Allocator = std.mem.Allocator;
 const Random = std.Random;
