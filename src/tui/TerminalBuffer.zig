@@ -1,5 +1,5 @@
 const std = @import("std");
-// const interop = @import("../interop.zig");
+const interop = @import("../interop.zig");
 const Cell = @import("Cell.zig");
 
 const Random = std.Random;
