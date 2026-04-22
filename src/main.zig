@@ -90,7 +90,7 @@ const UiState = struct {
     is_autologin: bool,
     use_kmscon_vt: bool,
     active_tty: u8,
-    buffer: TerminalBuffer,
+    buffer: tui.TerminalBuffer,
     labels_max_length: usize,
     shutdown_label: Label,
     restart_label: Label,
