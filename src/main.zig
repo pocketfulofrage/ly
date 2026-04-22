@@ -1101,8 +1101,8 @@ pub fn main() !void {
         },
         .arrowheads => {
             // TerminalBuffer.zig init
-            const box_len = (2 * config.margin_box_h) + config.input_len + 1 + labels_max_length;
-            const box_height = (2 * config.margin_box_v) + 7;
+            const box_len = (2 * state.config.margin_box_h) + state.config.input_len + 1 + labels_max_length;
+            const box_height = (2 * state.config.margin_box_v) + 7;
             var arrowheads = try Arrowheads.init(
                 state.allocator,
                 &state.buffer,
