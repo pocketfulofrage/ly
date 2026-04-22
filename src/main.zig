@@ -27,6 +27,7 @@ const Cascade = @import("animations/Cascade.zig");
 const ColorMix = @import("animations/ColorMix.zig");
 const Doom = @import("animations/Doom.zig");
 const DurFile = @import("animations/DurFile.zig");
+const Dummy = @import("animations/Dummy.zig");
 const GameOfLife = @import("animations/GameOfLife.zig");
 const Matrix = @import("animations/Matrix.zig");
 const DataStream = @import("animations/DataStream.zig");
