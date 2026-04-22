@@ -972,8 +972,27 @@ pub fn main() !void {
 
     // Initialize the animation, if any
     var animation: ?*Widget = null;
+
+    switch (config.animation) {
+        .cyanjnpr => {
+            const cyanjnpr_animations = [_]enums.Animation{
+                .datastream,
+                .interference,
+                .arrowheads,
+                .perlin,
+                .kiroshi,
+                // .waveforms,
+                .colorbars,
+            };
+            config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
+        },
+        else => {},
+
     switch (state.config.animation) {
-        .none => {},
+        .none, .cyanjnpr => {
+            var dummy = Dummy{};
+            animation = dummy.animation();
+        },
         .doom => {
             var doom = try Doom.init(
                 state.allocator,
@@ -1044,6 +1063,37 @@ pub fn main() !void {
                 state.config.animation_frame_delay,
             );
             animation = dur.widget();
+        },
+        .datastream => {
+            var datastream = try DataStream.init(allocator, &buffer, config.datastream_fg, config.datastream_blocks, config.datastream_bidirectional, config.datastream_delay_min, config.datastream_delay_max, config.datastream_binary);
+            animation = datastream.animation();
+        },
+        .interference => {
+            var interference = try Interference.init(allocator, &buffer, config.interference_fg, config.interference_time_scale, config.interference_distance_scale, config.interference_corner_variant);
+            animation = interference.animation();
+        },
+        .kiroshi => {
+            var kiroshi = try Kiroshi.init(allocator, &buffer, config.kiroshi_fg, config.kiroshi_delay);
+            animation = kiroshi.animation();
+        },
+        .arrowheads => {
+            // TerminalBuffer.zig init
+            const box_len = (2 * config.margin_box_h) + config.input_len + 1 + labels_max_length;
+            const box_height = (2 * config.margin_box_v) + 7;
+            var arrowheads = try Arrowheads.init(allocator, &buffer, box_len, box_height, config.arrowheads_col1, config.arrowheads_col2, config.arrowheads_col3, config.arrowheads_delay, config.arrowheads_size);
+            animation = arrowheads.animation();
+        },
+        .perlin => {
+            var perlin = try Perlin.init(allocator, &buffer, config.perlin_fg, config.perlin_time_scale, config.perlin_distance_scale, config.perlin_direction_diagonal, config.perlin_sandworm_variant);
+            animation = perlin.animation();
+        },
+        .waveforms => {
+            var waveforms = try Waveforms.init(allocator, &buffer, 500);
+            animation = waveforms.animation();
+        },
+        .colorbars => {
+            var colorbars = ColorBars.init(&buffer, config.colorbars_brightness, config.colorbars_glitch_amplitude, config.colorbars_glitch_scale);
+            animation = colorbars.animation();
         },
     }
     defer if (animation) |a| a.deinit();
