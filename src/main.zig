@@ -47,7 +47,8 @@ const migrator = @import("config/migrator.zig");
 const OldSave = @import("config/OldSave.zig");
 const SavedUsers = @import("config/SavedUsers.zig");
 const custom = @import("config/custom.zig");
-const DisplayServer = @import("enums.zig").DisplayServer;
+const Enums = @import("enums.zig");
+// const DisplayServer = @import("enums.zig").DisplayServer;
 const Environment = @import("Environment.zig");
 const Entry = Environment.Entry;
 
