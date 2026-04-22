@@ -1,4 +1,4 @@
-# const interop = @import("../../ly-core/src/interop.zig");
+// const interop = @import("../../ly-core/src/interop.zig");
 
 const termbox = interop.termbox;
 
