@@ -987,6 +987,7 @@ pub fn main() !void {
             config.animation = cyanjnpr_animations[buffer.random.intRangeLessThan(usize, 0, cyanjnpr_animations.len)];
         },
         else => {},
+    }
 
     switch (state.config.animation) {
         .none, .cyanjnpr => {
